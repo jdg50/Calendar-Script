@@ -34,5 +34,6 @@ While ($input -ne 1 -and $input -ne 2 -and $input -ne 3 -and $input -ne 4)
 if ($userchoice -eq "Other") {
 $userchoice = Read-host "Enter the user you would like to give" $userinput "access to."
 $userchoice = $userchoice + ":\calendar"
-Write-host $userchoice
+$userrights = Read-Host "Enter the access you would like the user to have: (Owner/Editor/Reviewer/AvailabilityOnly/LimitedDetails)"
+Add-MailboxFolderpermission $userchoice -user $userinput -accessrights $userrights
 }
