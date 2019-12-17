@@ -10,7 +10,10 @@ $ChoiceInput = Read-Host "What calendar would you like to change permissions for
 3. For every Conference room
 4. For a specific user"
 Switch ($Choiceinput) {
-1 {Add-MailboxFolderPermission CCR@trioltd.com:\calendar -user $userinput -accessrights Editor}
+1 {Add-MailboxFolderPermission CCR@trioltd.com:\calendar -user $userinput -accessrights Editor
+   Add-MailboxFolderPermission FCRR@trioltd.com:\calendar -user $userinput -accessrights Editor
+   Add-MailboxFolderPermission LRC@trioltd.com:\calendar -user $userinput -accessrights Editor
+   Add-MailboxFolderPermission SCR@trioltd.com:\calendar -user $userinput -accessrights Editor}
 2 {}
 3 {}
 4 {}
