@@ -31,5 +31,5 @@ Default {continue}
 }
 While ($input -ne 1 -and $input -ne 2 -and $input -ne 3 -and $input -ne 4)
 
-if ($userchoice -eq "Other) {
+if ($userchoice -eq "Other") {
 }
