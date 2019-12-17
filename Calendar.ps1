@@ -25,8 +25,11 @@ Switch ($Choiceinput) {
    Add-MailboxFolderPermission ATXCONF@trioltd.com:\calendar -user $userinput -accessrights Editor
    Add-MailboxFolderPermission ATXCONF2@trioltd.com:\calendar -user $userinput -accessrights Editor
    }
-4 {}
+4 {$userchoice = "Other"}
 Default {continue}
 }
 }
 While ($input -ne 1 -and $input -ne 2 -and $input -ne 3 -and $input -ne 4)
+
+if ($userchoice -eq "Other) {
+}
