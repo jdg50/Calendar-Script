@@ -1,7 +1,7 @@
 ﻿$O365Session = New-PSSession –ConfigurationName Microsoft.Exchange -ConnectionUri https://ps.outlook.com/powershell -Credential $O365Cred -Authentication Basic -AllowRedirection
 Import-PSSession $o365Session
 
-$input = "Enter the email of the user that you are adding to the calendar: "
+$input = Read-Host "Enter the email of the user that you are adding to the calendar: "
 Get-Mailbox $input
 do {
 $Input = Read-Host "What calendar would you like to change permissions for?
