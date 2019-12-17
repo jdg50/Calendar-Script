@@ -13,9 +13,18 @@ Switch ($Choiceinput) {
 1 {Add-MailboxFolderPermission CCR@trioltd.com:\calendar -user $userinput -accessrights Editor
    Add-MailboxFolderPermission FCRR@trioltd.com:\calendar -user $userinput -accessrights Editor
    Add-MailboxFolderPermission LRC@trioltd.com:\calendar -user $userinput -accessrights Editor
-   Add-MailboxFolderPermission SCR@trioltd.com:\calendar -user $userinput -accessrights Editor}
-2 {}
-3 {}
+   Add-MailboxFolderPermission SCR@trioltd.com:\calendar -user $userinput -accessrights Editor
+   }
+2 {Add-MailboxFolderPermission ATXCONF@trioltd.com:\calendar -user $userinput -accessrights Editor
+   Add-MailboxFolderPermission ATXCONF2@trioltd.com:\calendar -user $userinput -accessrights Editor
+   }
+3 {Add-MailboxFolderPermission CCR@trioltd.com:\calendar -user $userinput -accessrights Editor
+   Add-MailboxFolderPermission FCRR@trioltd.com:\calendar -user $userinput -accessrights Editor
+   Add-MailboxFolderPermission LRC@trioltd.com:\calendar -user $userinput -accessrights Editor
+   Add-MailboxFolderPermission SCR@trioltd.com:\calendar -user $userinput -accessrights Editor
+   Add-MailboxFolderPermission ATXCONF@trioltd.com:\calendar -user $userinput -accessrights Editor
+   Add-MailboxFolderPermission ATXCONF2@trioltd.com:\calendar -user $userinput -accessrights Editor
+   }
 4 {}
 Default {continue}
 }
