@@ -1,4 +1,5 @@
-﻿$O365Session = New-PSSession –ConfigurationName Microsoft.Exchange -ConnectionUri https://ps.outlook.com/powershell -Credential $O365Cred -Authentication Basic -AllowRedirection
+﻿#Connect to exchange powershell. Not MSonline, exchange. 
+$O365Session = New-PSSession –ConfigurationName Microsoft.Exchange -ConnectionUri https://ps.outlook.com/powershell -Credential $O365Cred -Authentication Basic -AllowRedirection
 Import-PSSession $o365Session
 
 $userinput = Read-Host "Enter the email of the user that you are adding to the calendar: "
@@ -14,9 +15,11 @@ Switch ($Choiceinput) {
    Add-MailboxFolderPermission FCRR@trioltd.com:\calendar -user $userinput -accessrights Editor
    Add-MailboxFolderPermission LRC@trioltd.com:\calendar -user $userinput -accessrights Editor
    Add-MailboxFolderPermission SCR@trioltd.com:\calendar -user $userinput -accessrights Editor
+   Remove-Pssession $O365Session
    }
 2 {Add-MailboxFolderPermission ATXCONF@trioltd.com:\calendar -user $userinput -accessrights Editor
    Add-MailboxFolderPermission ATXCONF2@trioltd.com:\calendar -user $userinput -accessrights Editor
+   Remove-Pssession $O365Session
    }
 3 {Add-MailboxFolderPermission CCR@trioltd.com:\calendar -user $userinput -accessrights Editor
    Add-MailboxFolderPermission FCRR@trioltd.com:\calendar -user $userinput -accessrights Editor
@@ -24,6 +27,7 @@ Switch ($Choiceinput) {
    Add-MailboxFolderPermission SCR@trioltd.com:\calendar -user $userinput -accessrights Editor
    Add-MailboxFolderPermission ATXCONF@trioltd.com:\calendar -user $userinput -accessrights Editor
    Add-MailboxFolderPermission ATXCONF2@trioltd.com:\calendar -user $userinput -accessrights Editor
+   Remove-Pssession $O365Session
    }
 4 {$userchoice = "Other"}
 Default {continue}
@@ -36,4 +40,5 @@ $userchoice = Read-host "Enter the user you would like to give" $userinput "acce
 $userchoice = $userchoice + ":\calendar"
 $userrights = Read-Host "Enter the access you would like the user to have: (Owner/Editor/Reviewer/AvailabilityOnly/LimitedDetails)"
 Add-MailboxFolderpermission $userchoice -user $userinput -accessrights $userrights
+Remove-Pssession $O365Session
 }
