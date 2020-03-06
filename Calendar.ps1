@@ -13,7 +13,7 @@ $ChoiceInput = Read-Host "What calendar would you like to change permissions for
 4. For a specific user"
 Switch ($Choiceinput) {
 1 {Add-MailboxFolderPermission CCR@trioltd.com:\calendar -user $userinput -accessrights Editor
-   Add-MailboxFolderPermission FCRR@trioltd.com:\calendar -user $userinput -accessrights Editor
+   Add-MailboxFolderPermission FCR@trioltd.com:\calendar -user $userinput -accessrights Editor
    Add-MailboxFolderPermission LRC@trioltd.com:\calendar -user $userinput -accessrights Editor
    Add-MailboxFolderPermission SCR@trioltd.com:\calendar -user $userinput -accessrights Editor
    Remove-Pssession $O365Session
@@ -23,7 +23,7 @@ Switch ($Choiceinput) {
    Remove-Pssession $O365Session
    }
 3 {Add-MailboxFolderPermission CCR@trioltd.com:\calendar -user $userinput -accessrights Editor
-   Add-MailboxFolderPermission FCRR@trioltd.com:\calendar -user $userinput -accessrights Editor
+   Add-MailboxFolderPermission FCR@trioltd.com:\calendar -user $userinput -accessrights Editor
    Add-MailboxFolderPermission LRC@trioltd.com:\calendar -user $userinput -accessrights Editor
    Add-MailboxFolderPermission SCR@trioltd.com:\calendar -user $userinput -accessrights Editor
    Add-MailboxFolderPermission ATXCONF@trioltd.com:\calendar -user $userinput -accessrights Editor
