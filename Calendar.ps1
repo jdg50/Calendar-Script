@@ -1,6 +1,8 @@
 ﻿#Connect to exchange powershell. Not MSonline, exchange. 
 $O365Session = New-PSSession –ConfigurationName Microsoft.Exchange -ConnectionUri https://ps.outlook.com/powershell -Credential $O365Cred -Authentication Basic -AllowRedirection
 Import-PSSession $o365Session
+$HTXConference = "CCR@trioltd.com:\calendar", "FCR@trioltd.com:\calendar", "LRC@trioltd.com:\calendar", "SCR@trioltd.com:\calendar"
+$ATXConference = "ATXCONF@trioltd.com:\calendar", "ATXCONF2@trioltd.com:\calendar"
 
 #Prompt the user to enter the email of the user being given calendar permissions
 #Note that after every switch statement, the connection from exchange is removed via Remove-PSSession
