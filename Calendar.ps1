@@ -3,7 +3,7 @@ $O365Session = New-PSSession –ConfigurationName Microsoft.Exchange -Connection
 Import-PSSession $o365Session
 
 #Put conference room titles in an array for adding permissions
-$HTXConference = "CCR@trioltd.com", "FCR@trioltd.com", "LRC@trioltd.com", "SCR@trioltd.com:"
+$HTXConference = "CCR@trioltd.com", "FCR@trioltd.com", "LRC@trioltd.com", "SCR@trioltd.com"
 $ATXConference = "ATXCONF@trioltd.com", "ATXCONF2@trioltd.com"
 $AllConference = $HTXConference + $ATXConference
 
@@ -60,7 +60,43 @@ Default {continue}
 While ($input -ne 1 -and $input -ne 2 -and $input -ne 3 -and $input -ne 4)
 }
 2 {Write-Host "Input 2"}
-3 {Write-Host "Input 3"}
+3 {
+do {
+$ChoiceInput = Read-Host "What Calendar would you like to view permissions for?
+1. For HTX Conference Rooms
+2. For ATX Conference Rooms
+3. For every Conference room
+4. For a specific user"
+Switch ($Choiceinput) {
+1 {
+   foreach ($HTXConf in $HTXConference) {
+   Get-CalendarProcessing $HTXConf | Select Identity,ResourceDelegates
+   $HTXConf += ":\calendar"
+   Get-MailboxFolderPermission $HTXConf}
+   }
+2 {
+   foreach ($ATXConf in $ATXConference) {
+   Get-CalendarProcessing $ATXConf | Select Identity,ResourceDelegates
+   $ATXConf += ":\calendar"
+   Get-MailboxFolderPermission $ATXConf}
+   }
+3 {
+   foreach ($Allconf in $Allconference) {
+   Get-CalendarProcessing $AllConf | Select Identity,ResourceDelegates
+   $AllConf += ":\calendar"
+   GeT-MailboxFolderPermission $AllConf}
+   }
+4 {
+$userchoice = Read-host "Enter the email of the user you would like to check permissions for:"
+$userchoice = $userchoice + ":\calendar"
+Get-MailboxFolderPermission $userchoice
+Remove-Pssession $O365Session
+}
+Default {continue}
+}
+}
+While ($input -ne 1 -and $input -ne 2 -and $input -ne 3 -and $input -ne 4)
+}
 Default {continue}
 }
 }
