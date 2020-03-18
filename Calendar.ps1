@@ -87,8 +87,10 @@ Switch ($Choiceinput) {
 3 {
    foreach ($Allconf in $Allconference) {
    Get-CalendarProcessing $AllConf | Select Identity,ResourceDelegates
-   $AllConf += ":\calendar"
-   GeT-MailboxFolderPermission $AllConf}
+   $AllConf += ":\calendar"}
+   foreach ($AllCONF in $AllConference) {
+   $HTXConf += ":\calendar"
+   Get-MailboxFolderPermission $AllConf | Select identity,User,AccessRights | Format-Table}
    }
 4 {
 $userchoice = Read-host "Enter the email of the user you would like to check permissions for:"
