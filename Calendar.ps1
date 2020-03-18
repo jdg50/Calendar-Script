@@ -71,14 +71,18 @@ Switch ($Choiceinput) {
 1 {
    foreach ($HTXConf in $HTXConference) {
    Get-CalendarProcessing $HTXConf | Select Identity,ResourceDelegates
+   $HTXConf += ":\calendar"}
+   foreach ($HTXCONF in $HTXConference) {
    $HTXConf += ":\calendar"
-   Get-MailboxFolderPermission $HTXConf}
+   Get-MailboxFolderPermission $HTXConf | Select identity,User,AccessRights | Format-Table}
    }
 2 {
    foreach ($ATXConf in $ATXConference) {
    Get-CalendarProcessing $ATXConf | Select Identity,ResourceDelegates
+   $ATXConf += ":\calendar"}
+   foreach ($ATXCONF in $ATXConference) {
    $ATXConf += ":\calendar"
-   Get-MailboxFolderPermission $ATXConf}
+   Get-MailboxFolderPermission $ATXConf | Select identity,User,AccessRights | Format-Table}
    }
 3 {
    foreach ($Allconf in $Allconference) {
