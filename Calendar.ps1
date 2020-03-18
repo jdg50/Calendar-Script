@@ -13,10 +13,12 @@ $StartInput = Read-host "Enter what you would like to do:
 1. Add Calendar Permissions
 2. Remove Calendar Permissions
 3. Check Calendar Permissions"
+#Begin first switch statement
 Switch ($StartInput) {
 1 {
 #Prompt the user to enter the email of the user being given calendar permissions
 #Note that after every switch statement, the connection from exchange is removed via Remove-PSSession
+#Also note that this is a nested DO loop inside of a switch. Do Loop inside of a switch inside of a do loop. 
 do {
 $userinput = Read-Host "Enter the email of the user that you are adding to the calendar: "
 $ChoiceInput = Read-Host "What calendar would you like to change permissions for?
@@ -48,6 +50,7 @@ Switch ($Choiceinput) {
    Add-MailboxFolderPermission $AllConf -user $userinput -accessrights Editor}
    }
 4 {
+#This section gives access rights to specific user calendars. Helpful for anyone that needs access to an Excec calendar or other confused people trying to share their calendar
 $userchoice = Read-host "Enter the email of the user you would like to give" $userinput "access to."
 $userchoice = $userchoice + ":\calendar"
 $userrights = Read-Host "Enter the access you would like the user to have: (Owner/Editor/Reviewer/AvailabilityOnly/LimitedDetails)"
@@ -59,7 +62,10 @@ Default {continue}
 }
 While ($input -ne 1 -and $input -ne 2 -and $input -ne 3 -and $input -ne 4)
 }
+#Second choice within do loop, this section will be expanded for removing calendar permissions instead of adding
 2 {Write-Host "Input 2"}
+#Begin third choice, this is for viewing permissions. Helpful for viewing permissions of any random user as well as the permissions on a specific calendar. 
+#This calendar also shows the different permissions on resource calendars. Permission on the calendar mailbox itself != a resource delegate.
 3 {
 do {
 $ChoiceInput = Read-Host "What Calendar would you like to view permissions for?
