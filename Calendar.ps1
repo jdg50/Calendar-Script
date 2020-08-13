@@ -3,8 +3,8 @@ $O365Session = New-PSSession –ConfigurationName Microsoft.Exchange -Connection
 Import-PSSession $o365Session
 
 #Put conference room titles in an array for adding permissions
-$HTXConference = "CCR@trioltd.com", "FCR@trioltd.com", "LRC@trioltd.com", "SCR@trioltd.com"
-$ATXConference = "ATXCONF@trioltd.com", "ATXCONF2@trioltd.com"
+$HTXConference = "CCR@example.com", "FCR@example.com", "LRC@example.com", "SCR@example.com"
+$ATXConference = "ATXCONF@example.com", "ATXCONF2@example.com"
 $AllConference = $HTXConference + $ATXConference
 
 #Prompt the user what they would like to do:
